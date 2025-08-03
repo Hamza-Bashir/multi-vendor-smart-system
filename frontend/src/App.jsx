@@ -3,6 +3,7 @@ import RegisterPage from "./page/RegisterPage"
 import LoginPage from "./page/LoginPage"
 import VendorDashboard from "./Layout/VendorLayout"
 import Overview from "./components/vendor/Overview"
+import Product from "./components/vendor/product/Product"
 
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
     <Route path="/login" element={<LoginPage/>} />
     <Route path="/dashboard/vendor" element={<VendorDashboard/>}>
       <Route path="/dashboard/vendor" element={<Overview/>} />
+      <Route path="/dashboard/vendor/product" element={<Product />} />
 
     </Route>
 
