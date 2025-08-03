@@ -52,7 +52,7 @@ const Search = styled('div')(({ theme }) => ({
 const Header = () => {
 
     return <>
-    <header className="flex justify-between max-w-full mx-auto bg-gray-500 text-white p-3">
+    <header className="flex justify-between max-w-full mx-auto bg-gray-500 text-white p-3 fixed top-0 left-0 right-0">
         <div className="font-semibold text-2xl">
             Smart Inventory System
         </div>
