@@ -2,39 +2,18 @@ import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
-import TextField from "@mui/material/TextField";
-
-const initialRows = [
-  { id: 1, firstName: "Apple MacBook Air M2", category: "Sports" },
-  { id: 2, firstName: "Samsung Galaxy S24 Ultra", category: "Garments" },
-  { id: 3, firstName: "Sony WH-1000XM5 Headphones", category: "Store" },
-];
+import EditDialogBox from "../../reuseable/EditDialogBox";
 
 export default function ProductTable() {
-  const [rows, setRows] = React.useState(initialRows);
-  const [open, setOpen] = React.useState(false);
-  const [selectedRow, setSelectedRow] = React.useState(null);
+  const rows =  [
+    { id: 1, firstName: "Apple MacBook Air M2", category: "Sports" },
+    { id: 2, firstName: "Samsung Galaxy S24 Ultra", category: "Garments" },
+    { id: 3, firstName: "Sony WH-1000XM5 Headphones", category: "Store" },
+  ];
 
-  const handleEditClick = (row) => {
-    setSelectedRow(row);
-    setOpen(true);
-  };
+  const [openDialog, setOpenDialog] = React.useState(false)
 
-  const handleClose = () => {
-    setOpen(false);
-    setSelectedRow(null);
-  };
-
-  const handleSave = () => {
-    setRows((prev) =>
-      prev.map((r) => (r.id === selectedRow.id ? selectedRow : r))
-    );
-    setOpen(false);
-  };
+  
 
   const columns = [
     { field: "firstName", headerName: "Product Name", width: 180 },
@@ -51,7 +30,7 @@ export default function ProductTable() {
             variant="contained"
             color="primary"
             size="small"
-            onClick={() => handleEditClick(params.row)}
+            onClick={() => setOpenDialog(true)}
           >
             Edit
           </Button>
@@ -77,46 +56,55 @@ export default function ProductTable() {
         />
       </Paper>
 
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Edit Product</DialogTitle>
-        <DialogContent
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 2,
-            mt: 1,
-            minWidth: 400,
-          }}
-        >
-          <TextField
-            fullWidth
-            variant="outlined"
-            label="Product Name"
-            value={selectedRow?.firstName || ""}
-            onChange={(e) =>
-              setSelectedRow({ ...selectedRow, firstName: e.target.value })
-            }
-          />
-          <TextField
-            fullWidth
-            variant="outlined"
-            label="Category"
-            value={selectedRow?.category || ""}
-            onChange={(e) =>
-              setSelectedRow({ ...selectedRow, category: e.target.value })
-            }
-          />
-        </DialogContent>
 
-        <DialogActions>
-          <Button onClick={handleClose} color="secondary">
-            Cancel
-          </Button>
-          <Button onClick={handleSave} variant="contained" color="primary">
-            Save
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <EditDialogBox
+        isOpen={openDialog}
+        onClose={()=>setOpenDialog(false)}
+        title="Edit Product"
+      >
+        <form className="bg-white w-full p-6">
+
+      {/* Category Dropdown */}
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Category
+        </label>
+        <select
+          defaultValue=""
+          className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="" disabled>
+            Select Category
+          </option>
+          <option value="sports">Sports</option>
+          <option value="garments">Garments</option>
+        </select>
+      </div>
+
+      {/* Product Name Input */}
+      <div className="mb-4">
+        <label className="block text-sm font-medium text-gray-700 mb-1">
+          Product Name
+        </label>
+        <input
+          className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          type="text"
+          placeholder="Enter product name"
+        />
+      </div>
+
+      {/* Submit Button */}
+      <button
+        type="submit"
+        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition-all duration-200"
+      >
+        Edit Product
+      </button>
+    </form>
+      
+      </EditDialogBox>
+
+      
     </>
   );
 }
