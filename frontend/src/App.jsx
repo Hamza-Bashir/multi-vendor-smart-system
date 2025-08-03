@@ -2,7 +2,7 @@ import {Routes, Route} from "react-router-dom"
 import RegisterPage from "./page/RegisterPage"
 import LoginPage from "./page/LoginPage"
 import VendorDashboard from "./Layout/VendorLayout"
-import Overview from "./components/vendor/Overview"
+import Overview from "./components/vendor/overview/Overview"
 import Product from "./components/vendor/product/Product"
 
 
