@@ -16,9 +16,6 @@ const Dashboard = () => {
           <button className="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-100 text-gray-700 font-medium transition">
             📦 Orders
           </button>
-          <button className="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-100 text-gray-700 font-medium transition">
-            📈 Sales Report
-          </button>
         </nav>
       </div>
     );
