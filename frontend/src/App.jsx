@@ -4,6 +4,7 @@ import LoginPage from "./page/LoginPage"
 import VendorDashboard from "./Layout/VendorLayout"
 import Overview from "./components/vendor/overview/Overview"
 import Product from "./components/vendor/product/Product"
+import Category from "./components/vendor/category/Category"
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
     <Route path="/dashboard/vendor" element={<VendorDashboard/>}>
       <Route path="/dashboard/vendor" element={<Overview/>} />
       <Route path="/dashboard/vendor/product" element={<Product />} />
+      <Route path="/dashboard/vendor/category" element={<Category />} />
 
     </Route>
 
