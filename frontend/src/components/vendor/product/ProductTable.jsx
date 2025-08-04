@@ -6,9 +6,8 @@ import EditDialogBox from "../../reuseable/EditDialogBox";
 
 export default function ProductTable() {
   const rows =  [
-    { id: 1, firstName: "Apple MacBook Air M2", category: "Sports" },
-    { id: 2, firstName: "Samsung Galaxy S24 Ultra", category: "Garments" },
-    { id: 3, firstName: "Sony WH-1000XM5 Headphones", category: "Store" },
+    { id: 1, category: "Sports", product: "Cricket", productPrice: "100 rupees", productStock: "15 pcs", productImage: <img src="https://picsum.photos" /> },
+    
   ];
 
   const [openDialog, setOpenDialog] = React.useState(false)
@@ -16,8 +15,11 @@ export default function ProductTable() {
   
 
   const columns = [
-    { field: "firstName", headerName: "Product Name", width: 180 },
-    { field: "category", headerName: "Category Name", width: 150 },
+    { field: "category", headerName: "Category Name", width: 180 },
+    { field: "product", headerName: "Product Name", width: 150 },
+    { field: "productPrice", headerName: "Product Price", width: 150 },
+    { field: "productStock", headerName: "Product Stock", width: 150 },
+    { field: "productImage", headerName: "Product Image", width: 150 },
     {
       field: "action",
       headerName: "Action",
@@ -44,7 +46,7 @@ export default function ProductTable() {
 
   return (
     <>
-      <Paper sx={{ height: 400, width: "50%", margin: "20px auto" }}>
+      <Paper  sx={{ height: 400, width: "100%", margin: "20px auto" }}>
         <DataGrid
           rows={rows}
           columns={columns}

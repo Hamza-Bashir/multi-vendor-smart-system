@@ -5,9 +5,10 @@ const Product = () => {
     return <>
         <h2 className="font-semibold text-[16px] mt-16 p-4">Manage Product</h2>
 
-        <div className="flex justify-between">
-            <ProductTable /> 
+        <div className="">
+            
             <ProductForm />
+            <ProductTable /> 
         </div>
     
     </>

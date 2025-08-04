@@ -19,10 +19,10 @@ const columns = [
         <Button variant="contained" color="warning" size="small">
           Pending
         </Button>
-        <Button variant="contained" color="success" size="small">
+        <Button variant="contained" color="success" size="small" disabled>
           Deliver
         </Button>
-        <Button variant="contained" color="error" size="small">
+        <Button variant="contained" color="error" size="small" disabled>
           Cancel
         </Button>
       </div>
