@@ -6,7 +6,7 @@ import Overview from "./components/vendor/overview/Overview";
 import Product from "./components/vendor/product/Product";
 import Category from "./components/vendor/category/Category";
 import Order from "./components/vendor/order/Order";
-
+import Notification from "./components/vendor/notification/Notification";
 const App = () => {
   return (
     <>
@@ -19,6 +19,7 @@ const App = () => {
           <Route path="product" element={<Product />} />
           <Route path="category" element={<Category />} />
           <Route path="order" element={<Order />} />
+          <Route path="notification" element={<Notification/>} />
         </Route>
       </Routes>
     </>
